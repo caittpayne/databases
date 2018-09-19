@@ -1,0 +1,73 @@
+1. What data types do each of these values represent?
+
+"A Clockwork Orange" -- String
+42 -- Integer
+09/02/1945 -- Date
+98.7 -- Float
+$15.99 -- Float
+
+2. Explain when a database would be used. Explain when a text file would be used.
+
+A database is used when data for an application is being added, removed or changed. This is
+especially true with applications that utilize large amounts of data. Alternatively, text files
+are used for data that remains constant. The data entered through text files would not typically
+be modified, deleted, or added to.
+
+3. Describe one difference between SQL and other programming languages.
+
+SQL is a declarative language, where you do not need to provide an algorithm to search and retrieve
+data. You tell the database server what information you'd like, with the proper syntax, and the server
+returns that data.
+
+4. In your own words, explain how the pieces of a database system fit together at a high level.
+
+Relational databases work by 'linking' multiple tables together through Primary and Foreign Keys. These 'keys' are
+unique pieces of information that differentiate one record from another. With Relational Databases, unique groups of information
+are stored in their own table.
+
+For instance, a database with employee information may have a table for employee names and IDs,
+and another for the employee contact information. These two tables would be 'linked' together through the employee ID (PK).
+On the table level, information is stored using rows and columns, where columns identify the information and rows hold
+unique records.
+
+5. Explain the meaning of table, row, column, and value.
+
+A table is a collection of rows and columns that, typically, holds information for one unique area. For instance, employee
+names and their associated employee IDs. Rows represent each individual record in the table, in this case, the individual
+employee. Columns are responsible for identifying and holding unique fields. In our example, one column would hold the employee
+name and another would hold the employee ID. Rows and Columns create cells that hold values. These values are representative
+of the information defined by the column. For instance, the employee name value would be a string ('Adam Jones') and the ID
+would be an integer (6472).
+
+6. List three data types that can be used in a table.
+
+Three data types that can be used in a table are Integers, Booleans, and Strings.
+
+7. Given this payments table, provide an English description of the following queries and include their results:
+
+  - Select the data and amount columns from the 'Payments' table // Would return x amount of records and two columns, one with the Date
+    and another with the amount.
+
+  - Select the amount column for all records in the 'Payments' table over 500 // Would return the amounts for all records over 500.
+
+  - Select all records from the 'Payments' table where the payee is Mega Foods // Would return all Mega Foods records.
+
+
+8. Given this users table, write SQL queries using the following criteria and include the output:
+
+The email and sign-up date for the user named DeAndre Data.
+
+  SELECT email, signup
+  FROM users
+  WHERE userid = 2;
+
+The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+
+  SELECT userid
+  FROM users
+  WHERE email LIKE 'aleesia.algorithm@uw.edu';
+
+All the columns for the user ID equal to 4.
+
+  SELECT * FROM users
+  WHERE userid = 4;
