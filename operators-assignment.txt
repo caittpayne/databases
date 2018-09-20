@@ -1,0 +1,105 @@
+1. Write out a generic SELECT statement.
+
+SELECT * from tblPeople
+WHERE firstname LIKE '%howard%';
+
+2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+
+Sally (select)
+Felt  (from)
+Wild  (where)
+
+3. Given this dogs table, write queries to select the following pieces of data:
+
+    Display the name, gender, and age of all dogs that are part Labrador.
+
+      SELECT name, gender, age
+      FROM dogs
+      WHERE breed LIKE '%labrador%';
+
+    Display the ids of all dogs that are under 1 year old.
+
+      SELECT id
+      FROM dogs
+      WHERE age < 1;
+
+    Display the name and age of all dogs that are female and over 35lbs.
+
+      SELECT name, age
+      FROM dogs
+      WHERE gender = 'F'
+      AND weight > 35;
+
+    Display all of the information about all dogs that are not Shepherd mixes.
+
+    SELECT * FROM dogs
+    WHERE breed NOT LIKE '%shepherd%';
+
+    Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+    SELECT id, age, weight, breed
+    FROM dogs
+    WHERE weight > 60
+    OR breed LIKE '%great dane%';
+
+4. Given this cats table, what records are returned from these queries?
+
+  SELECT name, adoption_date FROM cats;
+
+  Returns the name and adoption date columns for all records - Mushi (2016-03-22), Seashell (NULL), Azul (2016-04-17), Victoire (2016-09-01), and Nala (NULL).
+
+  SELECT name, age FROM cats;
+
+  Returns the name and age for all the cat records - Mushi (1), Seashell (7), Azul (3), Victoire (7), Nala (1).
+
+
+5. From the cats table, write queries to select the following pieces of data.
+
+  - Display all the information about all of the available cats.
+
+  SELECT * from cats
+  WHERE adoption_date IS NULL;
+
+  - Display the name and sex of all cats who are 7 years old.
+
+  SELECT name, gender
+  FROM cats
+  WHERE age = 7;
+
+  - Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+  SELECT name
+  FROM cats;
+
+6. List each comparison operator and explain when you would use it. Include a real world example for each.
+
+- Less than (<) - You would use this operator to evaluate whether one value is smaller than the other. For instance, query all the records in the table with an age less than 5 (4,3,2,1,0).
+
+- Greater than (>) - You would use this operator to evaluate whether one value is larger than another. For instance, query all records with an age greater than 5.
+
+- Less than or equal to (<=) - You would use this operator to evaluate whether one value is smaller or the same as another. For instance, you can only qualify for kid's meals 12 and under.
+
+- Greater than or equal to (>=) - You would use this operator to evaluate where one value is larger or the same as another. For instance, querying people in a table 21+ (you would include those with ages 21 too).
+
+- Equal (=) - You would use this operator to compare whether two values are equal. For instance, selecting people from a table who live in a certain city.
+
+- Not equal (<> or !=) - You would use this operator to evaluate whether one value does not equal the other. For instance, querying names of wedding guests who have not RSVPed.
+
+- BETWEEN - You would use this operator to evaluate whether a value is less than and greater than two others. For instance, pulling census information for citizens aged between 18-30.
+
+- IS/IS NOT NULL - You would use this operator to evaluate whether a value is non-existent. For instance, pulling all wedding guests from a table where their 'Address' is not NULL. Call these guests to get address for invitations.
+
+- IS/IS NOT DISTINCT FROM - Like 'Not Equal' operators, you would use this to evaluate whether two values are not equal to each other. This construct behaves as if null were a normal data type. This would be used where one value may not exist. For instance, evaluating whether two people have the same amount of cash in their wallet. If they both had NULL, it would be true.
+
+7. From the cats table, what data is returned from these queries?
+    SELECT name FROM cats WHERE gender = ‘F’;
+
+    -All the information for female cat names (Seashell, Nala).
+
+    SELECT name FROM cats WHERE age <> 3;
+
+    -The names of cats that aren't 3 (Mushi, Seashell, Victoire, Nala).
+
+    SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+
+    -The IDs of cats who aren't Mushi and are males (3, 4).
