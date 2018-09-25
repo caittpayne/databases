@@ -124,10 +124,13 @@ For instance, a software company deploys both online and desktop versions of the
 
   - List all of the library patrons. If they have one or more books checked out, list the books with the patrons.
 
-  SELECT p.id, p.name, b.title
+  SELECT p.id, p.name,
+ 	CASE WHEN t.checked_in_date IS NULL THEN b.title
+    ELSE NULL
+    END title
   FROM patrons AS p
   LEFT OUTER JOIN transactions AS t
-  ON p.id = t.patron_id
+  ON t.patron_id = p.id
   LEFT OUTER JOIN books AS b
-  ON t.isbn = b.isbn
-  ORDER BY p.id
+  ON b.isbn = t.isbn
+  ORDER BY p.id;
