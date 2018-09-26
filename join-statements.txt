@@ -124,13 +124,17 @@ For instance, a software company deploys both online and desktop versions of the
 
   - List all of the library patrons. If they have one or more books checked out, list the books with the patrons.
 
-  SELECT p.id, p.name,
- 	CASE WHEN t.checked_in_date IS NULL THEN b.title
-    ELSE NULL
-    END title
-  FROM patrons AS p
-  LEFT OUTER JOIN transactions AS t
-  ON t.patron_id = p.id
-  LEFT OUTER JOIN books AS b
-  ON b.isbn = t.isbn
-  ORDER BY p.id;
+  SELECT
+  	patrons.name,
+        MAX(CASE
+         	WHEN books.title IN (
+            SELECT title
+            FROM books
+            WHERE transactions.checked_in_date IS NULL)
+            THEN books.title
+         ELSE ''
+         END )
+    FROM patrons
+         INNER JOIN transactions ON transactions.patron_id = patrons.id
+         INNER JOIN books ON books.isbn = transactions.isbn
+    GROUP BY patrons.name
